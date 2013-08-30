@@ -20,8 +20,11 @@ public class WikiGatewayTest {
 
 	@Test
 	public void testGetWikiPage() {
-		String wikiPage = WikipediaGateway.getWikiPage("gladiator", "2000");
+		String wikiPage = WikipediaGateway.getWikiPage("the hangover", "2009");
 		assertTrue(wikiPage.length() > 0);
+		wikiPage = WikipediaGateway.getWikiPage("gladiator", "2000");
+		assertTrue(wikiPage.length() > 0);
+		
 	}
 
 }
