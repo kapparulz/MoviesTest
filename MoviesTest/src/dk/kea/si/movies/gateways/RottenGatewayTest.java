@@ -10,6 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import dk.kea.si.movies.domain.Movie;
+import dk.kea.si.movies.domain.MovieSearchResults;
 import dk.kea.si.movies.gateways.RottenTomatoesGateway;
 
 public class RottenGatewayTest {
@@ -25,7 +26,15 @@ public class RottenGatewayTest {
 
 	@Test
 	public void testSearchMovies() {
-		fail("Not yet implemented");
+		MovieSearchResults movieList = null;
+		try {
+			movieList = RottenTomatoesGateway.searchMovies(apiKey, "gladiator", "1");
+		}  catch (IOException e) {
+			e.printStackTrace();
+			fail("IOException in SearchMovies() method");
+		}
+		assertNotNull(movieList);
+		assertTrue(movieList.getMovies().length > 0 );
 	}
 
 	@Test
@@ -46,17 +55,44 @@ public class RottenGatewayTest {
 
 	@Test
 	public void testFindCurrentlyInTheaters() {
-		fail("Not yet implemented");
+		MovieSearchResults movieList = null;
+		try {
+			movieList=RottenTomatoesGateway.findCurrentlyInTheaters(apiKey);
+		}  catch (IOException e) {
+			e.printStackTrace();
+			fail("IOException in findCurrentlyInTheaters() method");
+		}
+		assertNotNull(movieList);
+		assertTrue("There was no entries in the movie array",movieList.getMovies().length > 0);
+		assertTrue("The movie array did not contain correct number of entries",movieList.getMovies().length == 6);
 	}
 
 	@Test
 	public void testFindComingSoon() {
-		fail("Not yet implemented");
+		MovieSearchResults movieList = null;
+		try {
+			movieList=RottenTomatoesGateway.findCurrentlyInTheaters(apiKey);
+		}  catch (IOException e) {
+			e.printStackTrace();
+			fail("IOException in findComingSoon() method");
+		}
+		assertNotNull(movieList);
+		assertTrue("There was no entries in the movie array",movieList.getMovies().length > 0);
+		assertTrue("The movie array did not contain correct number of entries",movieList.getMovies().length == 6);
 	}
 
 	@Test
 	public void testFindOpening() {
-		fail("Not yet implemented");
+		MovieSearchResults movieList = null;
+		try {
+			movieList=RottenTomatoesGateway.findCurrentlyInTheaters(apiKey);
+		}  catch (IOException e) {
+			e.printStackTrace();
+			fail("IOException in findCurrentlyInTheaters() method");
+		}
+		assertNotNull(movieList);
+		assertTrue("There was no entries in the movie array",movieList.getMovies().length > 0);
+		assertTrue("The movie array did not contain correct number of entries",movieList.getMovies().length == 6);
 	}
 
 }
