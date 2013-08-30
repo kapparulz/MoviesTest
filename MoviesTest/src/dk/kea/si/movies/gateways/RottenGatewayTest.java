@@ -14,10 +14,11 @@ import dk.kea.si.movies.domain.MovieSearchResults;
 import dk.kea.si.movies.gateways.RottenTomatoesGateway;
 
 public class RottenGatewayTest {
-	private String apiKey = "eu48pmstyjtehcce8rrf7nt6";
+	private String apiKey = null;
 
 	@Before
 	public void setUp() throws Exception {
+		apiKey = GetApiKeys.getRottenTomatoesApiKey();
 	}
 
 	@After

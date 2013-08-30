@@ -24,7 +24,7 @@ public class GoogleGatewayTest {
 
 	@Test
 	public void testFindVideos() {
-		String apiKey ="AIzaSyAGd8BvQATjE2E9gzFMX2W7sxeoPDpVEhQ";
+		String apiKey =GetApiKeys.getGoogleApiKey();
 		String searchQuery = "gladiator 2001 trailer";
 		ArrayList<GoogleVideo> testList = new ArrayList<>();
 		

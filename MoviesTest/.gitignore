@@ -1,1 +1,12 @@
-/bin
+*.class
+
+# Package Files #
+*.war
+*.ear
+
+# Eclipse #
+.classpath
+.project
+.settings/
+# Ignore apikeys for test #
+*.ini
