@@ -2,6 +2,10 @@ package dk.kea.si.movies.login;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
+import javax.swing.JFrame;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,7 +16,7 @@ import net.sourceforge.jwebunit.util.TestingEngineRegistry;
 
 import static net.sourceforge.jwebunit.junit.JWebUnit.*;
 
-public class TestLogin {
+public class AuthTest {
 	
 	@Before
 	public void prepare() {
@@ -33,34 +37,44 @@ public class TestLogin {
 		clickLink("login");
 		element = getElementAttributeByXPath("//div[@id='janrainModal']", "style");
 		assertTrue(element.contains("display: block"));
-//		assertElementPresent("janrain-google");
-//		clickElementByXPath("//li[@id='janrain-google']");
+
 		assertElementPresent("janrain-yahoo");
 		clickElementByXPath("//li[@id='janrain-yahoo']");
-		sleep(5000);
 		assertWindowCountEquals(2);
 		assertWindowPresentWithTitle("Sign in to Yahoo!");
 		gotoWindowByTitle("Sign in to Yahoo!");
-		setTextField("login", "manggangbang@yahoo.dk");
-		setTextField("passwd", "imacopuidiot88");
-		submit();
+		setTextField("login", "testmoviehunter123@yahoo.dk");
+		setTextField("passwd", "Test12345");
 		
-		assertElementPresent("username");
-		IElement username = getElementById("username");
+		submit(".save");
 		
-		assertTrue(username.getAttribute("value").contains("manggangbang@yahoo.dk"));
-		
-	}
-	
-	private void sleep(int t)
-	{
 		try {
-			Thread.sleep(t);
+			Thread.sleep(20000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		//beginAt("/default.jsp");
+		//gotoWindowByTitle("Movies");
+
+		assertTextPresent("Logout");
+		assertElementPresent("username");
+		IElement username = getElementById("username");
+		
+		assertTrue(username
+				.getTextContent()
+				.contains("movie hunter"));
+		
+		assertElementNotPresent("login");
+				
+		assertElementPresent("logout");
+		clickLink("logout");
+		assertElementPresent("login");
 	}
+	
+
+
 	
 	@After
 	public void tearDown() throws Exception {
