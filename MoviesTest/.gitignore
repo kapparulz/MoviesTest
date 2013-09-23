@@ -10,3 +10,4 @@
 .settings/
 # Ignore apikeys for test #
 *.ini
+/bin
